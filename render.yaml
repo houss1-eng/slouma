@@ -1,0 +1,18 @@
+# Render : New › Blueprint › choisir ce dépôt GitHub. Render demande DATABASE_URL (chaîne de connexion Neon).
+services:
+  - type: web
+    name: elegance-barbershop
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/me
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NODE_VERSION
+        value: "20"
+      - key: TZ
+        value: Africa/Tunis
+      - key: VAPID_SUBJECT
+        value: mailto:contact@elegancebarbershop.tn

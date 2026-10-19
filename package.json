@@ -1,0 +1,23 @@
+{
+  "name": "barber-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Réservation en ligne pour salon de coiffure (barbier)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "migrate": "node scripts/migrate-sqlite.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^4.22.3",
+    "pg": "^8.23.1",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "better-sqlite3": "^11.10.0"
+  }
+}
