@@ -1,6 +1,6 @@
 // Service worker : ouverture hors ligne + notifications push (même application fermée).
-const VERSION = 'elegance-v1';
-const FILES = ['/', '/index.html', '/style.css', '/app.js', '/icons/logo.png', '/icons/logo-full.png', '/icons/icon-192.png', '/icons/badge.png', '/manifest.webmanifest'];
+const VERSION = 'elegance-v2';
+const FILES = ['/', '/index.html', '/style.css', '/app.js', '/icons/logo.png', '/icons/logo-full.png', '/icons/mascot.png', '/icons/icon-192.png', '/icons/badge.png', '/manifest.webmanifest'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES))); self.skipWaiting(); });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== VERSION).map(k => caches.delete(k)))));

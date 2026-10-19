@@ -44,6 +44,8 @@ const TABS = {
 };
 const roleTabs = () => TABS[me ? me.role : 'guest'];
 function render(v) {
+  // nouvel onglet : petite animation d'entrée de la page
+  if (v && v !== view) { const m = $('m'); m.classList.remove('enter'); void m.offsetWidth; m.classList.add('enter'); }
   view = v || view;
   $('nav').hidden = false;
   const tabs = roleTabs();

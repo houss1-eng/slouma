@@ -12,22 +12,25 @@
 <meta name="apple-mobile-web-app-title" content="Elegance Barber Shop">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<div id="splash" aria-hidden="true"><div class="sp-ring"><img src="/icons/mascot.png" alt=""></div><img class="sp-logo" src="/icons/logo-full.png" alt=""><div class="sp-bar"></div></div>
+<script>try { if (sessionStorage.splash) document.getElementById('splash').remove(); sessionStorage.splash = 1; } catch (e) { }</script>
 <header>
   <img src="/icons/logo.png" alt="">
   <b id="shop">ELEGANCE</b>
+  <i class="pole" aria-hidden="true"></i>
   <button id="bell" class="icon" hidden aria-label="Notifications">🔔<span id="badge" hidden></span></button>
 </header>
 <div id="inst" hidden></div>
 <div id="pb" hidden></div>
 <div id="iosHelp" hidden></div>
-<main id="m"><p class="center muted">Chargement…</p></main>
+<main id="m"><div class="loader"><i class="pole lg"></i>Chargement…</div></main>
 <nav id="nav" hidden></nav>
 <div id="lb" hidden onclick="this.hidden=true"></div>
 <div id="toast" role="status" hidden></div>

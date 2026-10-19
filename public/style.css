@@ -1,7 +1,11 @@
-/* Elegance Barber Shop : noir + dégradé or du logo */
+/* Elegance Barber Shop : charbon chaud + or du logo, rayures rouge / blanc / bleu de l'enseigne de barbier */
 :root{
   color-scheme:dark;
-  --bg:#000;--card:#111113;--card2:#1a1a1d;--line:#2a2418;--line2:#3a3020;--fg:#f5f2ea;--muted:#a39d90;
+  --bg:#0c0b09;--card:#15130f;--card2:#1e1b16;--line:#2c261b;--line2:#3d3424;--fg:#f6f1e6;--muted:#a59d8c;
+  --red:#d42a3c;--blue:#2d5fd2;
+  --pole:repeating-linear-gradient(-45deg,var(--red) 0 4px,#fff 4px 8px,var(--blue) 8px 12px,#fff 12px 16px);
+  --pole-x:repeating-linear-gradient(45deg,var(--red) 0 4px,#fff 4px 8px,var(--blue) 8px 12px,#fff 12px 16px);
+  --display:Montserrat,Poppins,system-ui,sans-serif;
   --gold:#e3b94a;--gold-grad:linear-gradient(135deg,#f6dc6b 0%,#e3b94a 40%,#c99536 75%,#c9a489 100%);
   --on-gold:#121008;--ok:#5ad38b;--bad:#f27474;--warn:#f2c14e;
   --r:16px;--shadow:0 6px 24px rgba(0,0,0,.45);
@@ -10,15 +14,21 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Poppins,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   max-width:600px;margin-inline:auto;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
-  background-image:radial-gradient(600px 300px at 50% -80px,rgba(227,185,74,.13),transparent 70%);background-repeat:no-repeat}
+  background-image:radial-gradient(640px 320px at 50% -90px,rgba(227,185,74,.16),transparent 70%),radial-gradient(500px 400px at 110% 110%,rgba(45,95,210,.07),transparent 70%);
+  background-repeat:no-repeat;background-attachment:fixed}
 header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:10px 16px;
-  padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(0,0,0,.88);backdrop-filter:blur(10px);
-  border-bottom:1px solid transparent;border-image:var(--gold-grad) 1}
+  padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(12,11,9,.9);backdrop-filter:blur(10px)}
+/* liseré animé façon enseigne de barbier sous l'en-tête */
+header::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--pole-x);background-size:45.25px 100%;opacity:.85;animation:pole-x 1.4s linear infinite}
 header img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 2px #c99536}
-header b{font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+header b{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+header .pole{margin-left:auto}
+header .pole+#bell{margin-left:4px}
 main{padding:4px 16px 16px}
-h2{font-size:21px;font-weight:600;margin:18px 0 10px}
-h3{font-size:12px;margin:24px 0 10px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:1.6px}
+main.enter{animation:rise .35s ease-out}
+h2{font-family:var(--display);font-size:21px;font-weight:700;margin:18px 0 10px}
+h3{font-size:12px;margin:24px 0 10px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:1.6px;display:flex;align-items:center;gap:8px}
+h3::before{content:"";width:18px;height:5px;border-radius:3px;flex:none;background:var(--pole-x);background-size:45.25px 100%;animation:pole-x 1.4s linear infinite}
 a{color:var(--gold)}
 label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
 input,select,textarea,button{font:inherit;color:var(--fg)}
@@ -29,8 +39,10 @@ input[type=checkbox]{width:20px;height:20px;accent-color:var(--gold);flex:none}
 button{cursor:pointer;border:1px solid var(--line2);background:var(--card2);border-radius:12px;padding:9px 14px;transition:transform .08s,border-color .15s}
 button:active{transform:scale(.97)}
 button:disabled{opacity:.4;cursor:default;transform:none}
-button.main{width:100%;margin-top:18px;padding:14px;background:var(--gold-grad);color:var(--on-gold);border:0;font-weight:700;font-size:16px;letter-spacing:.3px;box-shadow:0 6px 20px rgba(227,185,74,.25)}
+button.main{position:relative;overflow:hidden;width:100%;margin-top:18px;padding:14px;background:var(--gold-grad);color:var(--on-gold);border:0;font-weight:700;font-size:16px;letter-spacing:.3px;box-shadow:0 6px 20px rgba(227,185,74,.25)}
+button.main::after,.offer::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-100%);animation:sweep 3.6s ease-in-out infinite}
 button.main:disabled{box-shadow:none}
+button.main:disabled::after{display:none}
 button.danger{color:var(--bad);border-color:#4a2020}
 button.ok{color:var(--ok);border-color:#1e4430}
 button.icon{background:none;border:0;font-size:20px;padding:4px 6px;position:relative}
@@ -65,6 +77,7 @@ button.icon{background:none;border:0;font-size:20px;padding:4px 6px;position:rel
 .barbers{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
 .barber{text-align:left;padding:12px}
 .barber.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset;background:#17140c}
+.barber.on .avatar{animation:halo 1.8s ease-out infinite}
 .avatar{width:40px;height:40px;border-radius:50%;background:var(--gold-grad);color:var(--on-gold);display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex:none}
 /* choix des services */
 .services{display:grid;gap:6px}
@@ -99,18 +112,19 @@ nav{position:fixed;bottom:0;left:0;right:0;max-width:600px;margin-inline:auto;di
   border-top:1px solid transparent;border-image:var(--gold-grad) 1;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
 nav button{flex:1;border:0;border-radius:0;background:none;font-size:11px;padding:9px 2px;color:var(--muted)}
 nav button span{display:block;font-size:20px;line-height:1.25;filter:grayscale(1);opacity:.7}
-nav button.on{color:var(--gold);font-weight:600}
-nav button.on span{filter:none;opacity:1}
+nav button.on{color:var(--gold);font-weight:600;position:relative}
+nav button.on::before{content:"";position:absolute;top:0;left:26%;right:26%;height:3px;border-radius:0 0 3px 3px;background:var(--pole-x);background-size:45.25px 100%;animation:pole-x 1.4s linear infinite}
+nav button.on span{filter:none;opacity:1;animation:pop .35s ease-out}
 #toast{position:fixed;left:16px;right:16px;bottom:calc(92px + env(safe-area-inset-bottom,0px));max-width:568px;margin-inline:auto;
   background:#17140c;border:1px solid var(--gold);border-radius:14px;padding:12px 14px;text-align:center;z-index:9;box-shadow:var(--shadow)}
 .hero{text-align:center;padding:20px 0 6px}
-.hero img{width:min(300px,86%);height:auto;border-radius:var(--r);box-shadow:0 0 0 1px var(--line2),0 0 28px rgba(227,185,74,.18)}
-.hero h1{margin:10px 0 2px;font-size:26px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero img{width:min(300px,86%);height:auto;border-radius:var(--r);box-shadow:0 0 0 1px var(--line2),0 0 28px rgba(227,185,74,.18);animation:float 6s ease-in-out infinite}
+.hero h1{font-family:var(--display);margin:10px 0 2px;font-size:26px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p{margin:10px 0 4px}
 .tabs{display:flex;gap:6px;background:var(--card2);padding:4px;border-radius:14px}
 .tabs button{flex:1;border:0;background:none}
 .tabs button.on{background:var(--gold-grad);color:var(--on-gold);font-weight:700}
-.offer{margin:10px 0;padding:14px;border-radius:var(--r);background:var(--gold-grad);color:var(--on-gold);box-shadow:0 6px 20px rgba(227,185,74,.2)}
+.offer{position:relative;overflow:hidden;margin:10px 0;padding:14px;border-radius:var(--r);background:var(--gold-grad);color:var(--on-gold);box-shadow:0 6px 20px rgba(227,185,74,.2)}
 .offer b{font-size:16px}
 .offer div{margin-top:2px}
 /* éditeur d'horaires */
@@ -153,3 +167,42 @@ img.avatar{object-fit:cover;padding:0}
 #lb .lb-box{width:100%;max-width:520px;background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:12px}
 #lb img{width:100%;max-height:70vh;object-fit:contain;border-radius:10px;display:block}
 #lb .small-btn{background:var(--gold-grad);color:var(--on-gold);border:0;font-weight:700;padding:9px 14px;white-space:nowrap}
+
+/* ===== Enseigne de barbier animée (rayures qui montent, capuchons chromés) ===== */
+.pole{position:relative;display:inline-block;flex:none;width:12px;height:30px;border-radius:3px;
+  background:var(--pole);background-size:100% 45.25px;animation:pole-y 1.2s linear infinite;
+  box-shadow:inset 3px 0 3px rgba(255,255,255,.55),inset -3px 0 4px rgba(0,0,0,.45)}
+.pole::before,.pole::after{content:"";position:absolute;left:-3px;right:-3px;height:5px;border-radius:3px;background:linear-gradient(90deg,#8d8d8d,#f4f4f4 45%,#9a9a9a)}
+.pole::before{top:-4px}
+.pole::after{bottom:-4px}
+.pole.lg{width:22px;height:70px;border-radius:5px}
+.pole.lg::before,.pole.lg::after{left:-5px;right:-5px;height:9px;border-radius:5px}
+.pole.lg::before{top:-8px}
+.pole.lg::after{bottom:-8px}
+.loader{display:flex;flex-direction:column;align-items:center;gap:18px;padding:60px 0;color:var(--muted)}
+
+/* ===== Écran d'accueil au lancement (une fois par session) ===== */
+#splash{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  background:radial-gradient(circle at 50% 38%,#2a2112,var(--bg) 68%);animation:splash-out .5s ease 2s forwards}
+.sp-ring{position:relative;width:150px;height:150px;animation:zoom .7s cubic-bezier(.2,1.5,.4,1) both}
+.sp-ring::before{content:"";position:absolute;inset:-6px;border-radius:50%;
+  background:conic-gradient(var(--red),#fff,var(--blue),#f6dc6b,var(--red));animation:spin 1.6s linear infinite}
+.sp-ring img{position:relative;display:block;width:100%;height:100%;border-radius:50%;border:4px solid var(--bg)}
+.sp-logo{width:210px;max-width:70%;border-radius:12px;animation:rise .6s ease-out .35s both}
+.sp-bar{width:150px;height:6px;border-radius:3px;background:var(--pole-x);background-size:45.25px 100%;animation:pole-x .8s linear infinite,rise .6s ease-out .5s both}
+
+@keyframes pole-y{to{background-position:0 45.25px}}
+@keyframes pole-x{to{background-position:45.25px 0}}
+@keyframes sweep{0%,55%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes float{50%{transform:translateY(-6px)}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+@keyframes pop{40%{transform:scale(1.25)}}
+@keyframes spin{to{transform:rotate(1turn)}}
+@keyframes zoom{from{opacity:0;transform:scale(.4)}}
+@keyframes halo{from{box-shadow:0 0 0 0 rgba(227,185,74,.6)}to{box-shadow:0 0 0 10px rgba(227,185,74,0)}}
+@keyframes splash-out{to{opacity:0;visibility:hidden}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important}
+  #splash{display:none}
+}
