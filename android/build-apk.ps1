@@ -76,8 +76,8 @@ Copy-Item $keystore (Join-Path $proj 'signing.keystore') -Force
 $twa = [ordered]@{
   packageId = $packageId; host = $siteHost; name = 'Elegance Barber Shop'; launcherName = 'Elegance Barber Shop'
   display = 'standalone'; orientation = 'portrait'; startUrl = '/'
-  themeColor = '#000000'; themeColorDark = '#000000'; navigationColor = '#000000'; navigationColorDark = '#000000'
-  navigationDividerColor = '#000000'; navigationDividerColorDark = '#000000'; backgroundColor = '#000000'
+  themeColor = '#ffffff'; themeColorDark = '#ffffff'; navigationColor = '#ffffff'; navigationColorDark = '#ffffff'
+  navigationDividerColor = '#ffffff'; navigationDividerColorDark = '#ffffff'; backgroundColor = '#ffffff'
   enableNotifications = $true; enableSiteSettingsShortcut = $false; splashScreenFadeOutDuration = 300
   iconUrl = "$origin/icons/icon-512.png"; maskableIconUrl = "$origin/icons/icon-maskable.png"
   webManifestUrl = "$origin/manifest.webmanifest"; fullScopeUrl = "$origin/"

@@ -581,7 +581,7 @@ V.more = async () => {
       <label>Fidélité : nombre de coupes avant la réduction</label><input id="st_loyalty_every" type="number" min="1" value="${s.loyalty_every}">
       <label>Fidélité : réduction (%)</label><input id="st_loyalty_discount" type="number" min="1" max="100" value="${s.loyalty_discount}">
       <button class="main" onclick="A.saveSettings()">Enregistrer</button><p id="st_err" class="err"></p></div>
-    <button class="main danger" style="background:none;border:1px solid #4a2020;box-shadow:none" onclick="A.logout()">🚪 Se déconnecter</button>`;
+    <button class="main danger" style="background:none;border:1px solid #f2c6cb;box-shadow:none" onclick="A.logout()">🚪 Se déconnecter</button>`;
 };
 A.saveSettings = () => run(async () => {
   const keys = ['shop_name', 'shop_phone', 'shop_address', 'cancel_hours', 'booking_days', 'reminder_minutes', 'loyalty_every', 'loyalty_discount'];
@@ -601,7 +601,7 @@ V.account = () => {
     <h3>🔔 Notifications sur ce téléphone</h3><div class="card"><p id="push_st" class="small">${pushStatus()}</p>
     <div id="push_diag" class="diag small"></div><button style="margin-top:10px" onclick="A.pushRepair()">🛠 Réparer les notifications</button>
     ${pushOn ? '<button class="main" onclick="A.pushTest()">🔔 Recevoir une notification de test</button>' : '<button class="main" onclick="A.pushEnable()">Activer les notifications</button>'}</div>
-    <button class="main danger" style="background:none;border:1px solid #5b2626" onclick="A.logout()">Se déconnecter</button>`;
+    <button class="main danger" style="background:none;border:1px solid #f2c6cb" onclick="A.logout()">Se déconnecter</button>`;
   pushDiag();
 };
 A.saveMe = () => run(async () => {
